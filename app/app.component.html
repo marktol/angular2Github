@@ -1,0 +1,50 @@
+<header>
+    <h1>Добавление</h1>
+</header>
+
+<main>
+    <form class="formclass"  (ngSubmit)="addItem(surname, name, patronymic, position, dateOfBirth, 
+    address, number, email, amountOfSalary); inputForm.reset()" #inputForm="ngForm">
+           <input type="text" id="q" name="surname" [(ngModel)]="surname" placeholder="Фамилия" pattern="^[а-яА-я\s]+$" required><br>
+           <input type="text" name="name" [(ngModel)]="name" placeholder="Имя" pattern="^[а-яА-я\s]+$" required><br>
+           <input type="text" name="patronymic" [(ngModel)]="patronymic" placeholder="Отчество" pattern="^[а-яА-я\s]+$" required><br>
+           <input type="text" name="position" [(ngModel)]="position" placeholder="Должность" pattern="^[а-яА-я\s]+$" required><br>
+           <input type="date" name="dateOfBirth" [(ngModel)]="dateOfBirth" placeholder="Дата рождения" required><br>
+           <input type="text" name="address" [(ngModel)]="address" placeholder="Адрес проживания" maxlength="55"  required><br>
+           <input type="text" name="number" [(ngModel)]="number" placeholder="Контактный телефон" maxlength="13" required><br>
+           <input type="email" name="email" [(ngModel)]="email" placeholder="Электронный адрес" maxlength="55" required><br>
+           <input type="text" name="amountOfSalary" [(ngModel)]="amountOfSalary" placeholder="Сумма оклада" pattern="^[ 0-9]+$" required><br>
+           <button type="submit" class="sub1">Добавить</button>
+           <button type="reset" class="sub2">Очистить</button>  
+    </form>
+</main>
+
+<table>
+    <thead>
+        <tr align="center">
+            <th>ФИО</th>
+            <th>Должность</th>
+            <th>Дата рождения</th>
+            <th>Адрес проживания</th>
+            <th>Контактный телефон</th>
+            <th>Электронный адрес</th>
+            <th>Сумма оклада</th>
+        </tr>
+    </thead>
+    <tbody>      
+        <tr *ngFor="let item of items">
+            <td class="td1">{{item.surname + " " + item.name + " " + item.patronymic}}</td>
+            <td>{{item.position}}</td>
+            <td>{{item.dateOfBirth}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.number}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.amountOfSalary}}</td>
+            <td><input type="button" class="RowButton" id="editButton" (click)="edit(item)">
+                <input type="button" class="RowButton" id="delButton" (click)="delete(item)"></td>
+            <!-- <td><div class="but"><button class="delete icon" (click)="delete(item)">
+                <i class="material-icons">delete</i>
+            </button></div></td> -->
+        </tr>  
+    </tbody>
+</table>
